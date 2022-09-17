@@ -1,0 +1,46 @@
+@charset "UTF-8";
+
+/*
+ * Theme Name: Timber Starter
+ * Description: Custom theme using Timber
+ * Author: Upstatement and YOU!
+*/
+
+// 1. Configuration and helpers
+@import
+  'abstracts/variables',
+  'abstracts/functions',
+  'abstracts/mixins';
+
+// 2. Vendors
+@import
+  'vendors/normalize';
+
+// 3. Base stuff
+@import
+  'base/base',
+  'base/fonts',
+  'base/typography',
+  'base/helpers',
+  'base/forms',
+  'base/lists',
+  'base/images',
+  'base/table';
+
+// 4. Layout-related sections
+@import
+  'layout/header',
+  'layout/footer';
+
+// 5. Components
+@import
+  'components/button',
+  'components/pagination';
+
+// 6. Page-specific styles
+@import
+  'pages/home';
+
+// 7. Themes
+@import
+  'themes/default';

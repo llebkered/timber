@@ -1,0 +1,762 @@
+@charset "UTF-8";
+/*
+ * Theme Name: MelWest
+ * Description: Custom theme using Timber
+ * Author: Upstatement and YOU!
+*/
+html {
+  /* default theme: light background, dark text, blue accent */
+  --theme-hue: 0; /* white */
+  --accent-hue: 194; /* blue */
+  --text-color-richer: hsl(var(--theme-hue), 0%, 5%); /* #0d0d0d		*/
+  --text-color-normal: hsl(
+    var(--theme-hue),
+    0%,
+    13%
+  ); /* #222222 		text color; button:hover:focus color */
+  --text-color-softer: hsl(
+    var(--theme-hue),
+    0%,
+    33%
+  ); /* #555555 		button color; button:hover border */
+  --accent-color: hsl(
+    var(--accent-hue),
+    86%,
+    57%
+  ); /* #33C3F0 		link; button-primary bg+border; textarea,select:focus border */
+  --accent-color-hover: hsl(
+    var(--accent-hue),
+    76%,
+    49%
+  ); /* #1EAEDB 		link hover; button-primary:hover:focus bg+border */
+  --border-color: hsl(var(--theme-hue), 0%, 73%); /* #bbbbbb		button border */
+  --border-color-softer: hsl(
+    var(--theme-hue),
+    0%,
+    82%
+  ); /* #d1d1d1		textarea,select,code,td,hr border	 */
+  --background-color: white; /* transparent body background; textarea,select background */
+  --background-color-softer: hsl(var(--theme-hue), 0%, 95%);
+  --code-background: hsl(
+    var(--theme-hue),
+    0%,
+    95%
+  ); /* #f1f1f1 		code background*/
+  --button-primary-color: white;
+  /* Note: Skeleton was based off a 10px font sizing for REM  */
+  /* 62.5% of typical 16px browser default = 10px */
+  --base-font-size: 62.5%;
+  /* Grid Defaults - default to match orig skeleton settings */
+  --grid-max-width: 1320px;
+  --font-size--1: clamp(0.83rem, 0.81rem + 0.13vw, 0.9rem);
+  --font-size-0: clamp(1rem, 0.95rem + 0.24vw, 1.13rem);
+  --font-size-1: clamp(1.2rem, 1.12rem + 0.4vw, 1.41rem);
+  --font-size-2: clamp(1.44rem, 1.32rem + 0.62vw, 1.76rem);
+  --font-size-3: clamp(1.73rem, 1.54rem + 0.92vw, 2.2rem);
+  --font-size-4: clamp(2.07rem, 1.81rem + 1.31vw, 2.75rem);
+  --font-size-5: clamp(2.49rem, 2.12rem + 1.84vw, 3.43rem);
+}
+
+/*  Dark Theme
+	Note: prefers-color-scheme selector support is still limited, but 
+	included for future and an example of defining a different base 'theme'
+*/
+@media (prefers-color-scheme: dark) {
+  :html {
+    /* dark theme: light background, dark text, blue accent */
+    --theme-hue: 0; /* black */
+    --accent-hue: 194; /* blue */
+    --text-color-richer: hsl(var(--theme-hue), 0%, 95%); /* 		*/
+    --text-color-normal: hsl(
+      var(--theme-hue),
+      0%,
+      80%
+    ); /* text color; button:hover:focus color */
+    --text-color-softer: hsl(
+      var(--theme-hue),
+      0%,
+      67%
+    ); /* button color; button:hover border */
+    --accent-color: hsl(
+      var(--accent-hue),
+      76%,
+      49%
+    ); /* link; button-primary bg+border; textarea,select:focus border */
+    --accent-color-hover: hsl(
+      var(--accent-hue),
+      86%,
+      57%
+    ); /* link hover; button-primary:hover:focus bg+border */
+    --border-color: hsl(var(--theme-hue), 0%, 27%); /* button border */
+    --border-color-softer: hsl(
+      var(--theme-hue),
+      0%,
+      20%
+    ); /* textarea,select,code,td,hr border	 */
+    --border-radius: 0.5;
+    --background-color: hsl(
+      var(--theme-hue),
+      0%,
+      12%
+    ); /* body background; textarea,select background */
+    --background-color-softer: hsl(var(--theme-hue), 0%, 18%);
+    --code-background: hsl(var(--theme-hue), 0%, 5%); /* code background*/
+    --button-primary-color: white;
+  }
+  img.value-img {
+    filter: invert(0.8);
+  }
+  /* TODO - test dialing back image intensity on dark background
+  img {
+    opacity: .80;
+    transition: opacity .5s ease-in-out;
+  }
+  img:hover {
+    opacity: 1;
+  }
+  */
+}
+/*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
+/* Document
+   ========================================================================== */
+/**
+ * 1. Correct the line height in all browsers.
+ * 2. Prevent adjustments of font size after orientation changes in iOS.
+ */
+html {
+  line-height: 1.15; /* 1 */
+  -webkit-text-size-adjust: 100%; /* 2 */
+}
+
+/* Sections
+   ========================================================================== */
+/**
+ * Remove the margin in all browsers.
+ */
+body {
+  margin: 0;
+}
+
+/**
+ * Render the `main` element consistently in IE.
+ */
+main {
+  display: block;
+}
+
+/**
+ * Correct the font size and margin on `h1` elements within `section` and
+ * `article` contexts in Chrome, Firefox, and Safari.
+ */
+/* Grouping content
+   ========================================================================== */
+/**
+ * 1. Add the correct box sizing in Firefox.
+ * 2. Show the overflow in Edge and IE.
+ */
+hr {
+  box-sizing: content-box; /* 1 */
+  height: 0; /* 1 */
+  overflow: visible; /* 2 */
+}
+
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd `em` font sizing in all browsers.
+ */
+pre {
+  font-family: monospace, monospace; /* 1 */
+  font-size: 1em; /* 2 */
+}
+
+/* Text-level semantics
+   ========================================================================== */
+/**
+ * Remove the gray background on active links in IE 10.
+ */
+a {
+  background-color: transparent;
+}
+
+/**
+ * 1. Remove the bottom border in Chrome 57-
+ * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
+ */
+abbr[title] {
+  border-bottom: none; /* 1 */
+  text-decoration: underline; /* 2 */
+  -webkit-text-decoration: underline dotted;
+          text-decoration: underline dotted; /* 2 */
+}
+
+/**
+ * Add the correct font weight in Chrome, Edge, and Safari.
+ */
+b,
+strong {
+  font-weight: bolder;
+}
+
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd `em` font sizing in all browsers.
+ */
+code,
+kbd,
+samp {
+  font-family: monospace, monospace; /* 1 */
+  font-size: 1em; /* 2 */
+}
+
+/**
+ * Add the correct font size in all browsers.
+ */
+small {
+  font-size: 80%;
+}
+
+/**
+ * Prevent `sub` and `sup` elements from affecting the line height in
+ * all browsers.
+ */
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+/* Embedded content
+   ========================================================================== */
+/**
+ * Remove the border on images inside links in IE 10.
+ */
+img {
+  border-style: none;
+}
+
+/* Forms
+   ========================================================================== */
+/**
+ * 1. Change the font styles in all browsers.
+ * 2. Remove the margin in Firefox and Safari.
+ */
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit; /* 1 */
+  font-size: 100%; /* 1 */
+  line-height: 1.15; /* 1 */
+  margin: 0; /* 2 */
+}
+
+/**
+ * Show the overflow in IE.
+ * 1. Show the overflow in Edge.
+ */
+button,
+input { /* 1 */
+  overflow: visible;
+}
+
+/**
+ * Remove the inheritance of text transform in Edge, Firefox, and IE.
+ * 1. Remove the inheritance of text transform in Firefox.
+ */
+button,
+select { /* 1 */
+  text-transform: none;
+}
+
+/**
+ * Correct the inability to style clickable types in iOS and Safari.
+ */
+button,
+[type=button],
+[type=reset],
+[type=submit] {
+  -webkit-appearance: button;
+}
+
+/**
+ * Remove the inner border and padding in Firefox.
+ */
+button::-moz-focus-inner,
+[type=button]::-moz-focus-inner,
+[type=reset]::-moz-focus-inner,
+[type=submit]::-moz-focus-inner {
+  border-style: none;
+  padding: 0;
+}
+
+/**
+ * Restore the focus styles unset by the previous rule.
+ */
+button:-moz-focusring,
+[type=button]:-moz-focusring,
+[type=reset]:-moz-focusring,
+[type=submit]:-moz-focusring {
+  outline: 1px dotted ButtonText;
+}
+
+/**
+ * Correct the padding in Firefox.
+ */
+fieldset {
+  padding: 0.35em 0.75em 0.625em;
+}
+
+/**
+ * 1. Correct the text wrapping in Edge and IE.
+ * 2. Correct the color inheritance from `fieldset` elements in IE.
+ * 3. Remove the padding so developers are not caught out when they zero out
+ *    `fieldset` elements in all browsers.
+ */
+legend {
+  box-sizing: border-box; /* 1 */
+  color: inherit; /* 2 */
+  display: table; /* 1 */
+  max-width: 100%; /* 1 */
+  padding: 0; /* 3 */
+  white-space: normal; /* 1 */
+}
+
+/**
+ * Add the correct vertical alignment in Chrome, Firefox, and Opera.
+ */
+progress {
+  vertical-align: baseline;
+}
+
+/**
+ * Remove the default vertical scrollbar in IE 10+.
+ */
+textarea {
+  overflow: auto;
+}
+
+/**
+ * 1. Add the correct box sizing in IE 10.
+ * 2. Remove the padding in IE 10.
+ */
+[type=checkbox],
+[type=radio] {
+  box-sizing: border-box; /* 1 */
+  padding: 0; /* 2 */
+}
+
+/**
+ * Correct the cursor style of increment and decrement buttons in Chrome.
+ */
+[type=number]::-webkit-inner-spin-button,
+[type=number]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/**
+ * 1. Correct the odd appearance in Chrome and Safari.
+ * 2. Correct the outline style in Safari.
+ */
+[type=search] {
+  -webkit-appearance: textfield; /* 1 */
+  outline-offset: -2px; /* 2 */
+}
+
+/**
+ * Remove the inner padding in Chrome and Safari on macOS.
+ */
+[type=search]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/**
+ * 1. Correct the inability to style clickable types in iOS and Safari.
+ * 2. Change font properties to `inherit` in Safari.
+ */
+::-webkit-file-upload-button {
+  -webkit-appearance: button; /* 1 */
+  font: inherit; /* 2 */
+}
+
+/* Interactive
+   ========================================================================== */
+/*
+ * Add the correct display in Edge, IE 10+, and Firefox.
+ */
+details {
+  display: block;
+}
+
+/*
+ * Add the correct display in all browsers.
+ */
+summary {
+  display: list-item;
+}
+
+/* Misc
+   ========================================================================== */
+/**
+ * Add the correct display in IE 10+.
+ */
+template {
+  display: none;
+}
+
+/**
+ * Add the correct display in IE 10.
+ */
+[hidden] {
+  display: none;
+}
+
+/**
+ * Set up a decent box model on the root element
+ */
+html {
+  box-sizing: border-box;
+}
+
+/**
+ * Make all elements from the DOM inherit from the parent box-sizing
+ * Since `*` has a specificity of 0, it does not override the `html` value
+ * making all elements inheriting from the root box-sizing value
+ * See: https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/
+ */
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+/**
+ * Basic styles for links
+ */
+a {
+  color: var(--accent-color);
+  text-decoration: none;
+}
+a:hover, a:active, a:focus, a:focus-within {
+  color: var(--accent-color-hover);
+  text-decoration: underline;
+}
+
+/**
+ * Basic typography style for copy text
+ */
+body {
+  color: var(--text-color-normal);
+  font: normal 125%/1.4 "Open Sans", "Helvetica Neue Light", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+}
+
+h1 {
+  font-size: var(--font-size-5);
+}
+
+h2 {
+  font-size: var(--font-size-4);
+}
+
+h3 {
+  font-size: var(--font-size-3);
+}
+
+h4 {
+  font-size: var(--font-size-2);
+}
+
+h5 {
+  font-size: var(--font-size-1);
+}
+
+h6 {
+  font-size: var(--font-size-0);
+}
+
+/**
+ * Clear inner floats
+ */
+.clearfix::after {
+  clear: both;
+  content: "";
+  display: table;
+}
+
+/**
+ * Main content containers
+ * 1. Make the container full-width with a maximum width
+ * 2. Center it in the viewport
+ * 3. Leave some space on the edges, especially valuable on small screens
+ */
+.container {
+  max-width: var(--grid-max-width); /* 1 */
+  margin-left: auto; /* 2 */
+  margin-right: auto; /* 2 */
+  padding-left: 20px; /* 3 */
+  padding-right: 20px; /* 3 */
+  width: 100%; /* 1 */
+}
+
+/**
+ * Hide text while making it readable for screen readers
+ * 1. Needed in WebKit-based browsers because of an implementation bug;
+ *    See: https://code.google.com/p/chromium/issues/detail?id=457146
+ */
+.hide-text {
+  overflow: hidden;
+  padding: 0; /* 1 */
+  text-indent: 101%;
+  white-space: nowrap;
+}
+
+/**
+ * Hide element while making it readable for screen readers
+ * Shamelessly borrowed from HTML5Boilerplate:
+ * https://github.com/h5bp/html5-boilerplate/blob/master/src/css/main.css#L119-L133
+ */
+.visually-hidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+input[type=email],
+input[type=number],
+input[type=search],
+input[type=text],
+input[type=tel],
+input[type=url],
+input[type=password],
+textarea,
+select {
+  height: 38px;
+  padding: 6px 10px; /* The 6px vertically centers text on FF, ignored by Webkit */
+  background-color: var(--background-color);
+  border: 1px solid var(--border-color-softer);
+  border-radius: 4px;
+  box-shadow: none;
+  box-sizing: border-box;
+}
+
+/* Removes awkward default styles on some inputs for iOS */
+input[type=email],
+input[type=number],
+input[type=search],
+input[type=text],
+input[type=tel],
+input[type=url],
+input[type=password],
+input[type=button],
+input[type=submit],
+textarea {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+textarea {
+  min-height: 65px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+
+input[type=email]:focus,
+input[type=number]:focus,
+input[type=search]:focus,
+input[type=text]:focus,
+input[type=tel]:focus,
+input[type=url]:focus,
+input[type=password]:focus,
+textarea:focus,
+select:focus {
+  border: 1px solid var(--accent-color);
+  outline: 0;
+}
+
+label,
+legend {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+fieldset {
+  padding: 0;
+  border-width: 0;
+}
+
+input[type=checkbox],
+input[type=radio] {
+  display: inline;
+}
+
+label > .label-body {
+  display: inline-block;
+  margin-left: 0.5rem;
+  font-weight: normal;
+}
+
+/* Lists
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+ul {
+  list-style: circle inside;
+}
+
+ol {
+  list-style: decimal inside;
+}
+
+ol,
+ul {
+  padding-left: 0;
+  margin-top: 0;
+}
+
+ul ul,
+ul ol,
+ol ol,
+ol ul {
+  font-size: 100%;
+  margin: 1rem 0 1rem 3rem;
+  color: var(--text-color-softer);
+}
+
+li {
+  margin-bottom: 0.5rem;
+}
+
+img {
+  max-width: 100%;
+}
+
+.alignleft {
+  float: left;
+  padding: 0.5em 0.5em 0.5em 0;
+}
+
+.alignright {
+  float: right;
+  padding: 0.5em 0 0.5em 0.5em;
+}
+
+th,
+td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid var(--border-color-softer);
+}
+
+th:first-child,
+td:first-child {
+  padding-left: 0;
+}
+
+th:last-child,
+td:last-child {
+  padding-right: 0;
+}
+
+.button,
+button,
+input[type=submit],
+input[type=reset],
+input[type=button] {
+  display: inline-block;
+  height: 38px;
+  padding: 0 30px;
+  color: var(--text-color-softer);
+  text-align: center;
+  font-size: var(--font-size-0);
+  font-weight: 600;
+  line-height: 38px;
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
+  text-decoration: none;
+  white-space: nowrap;
+  background-color: transparent;
+  border-radius: 4px;
+  border: 1px solid var(--border-color);
+  cursor: pointer;
+  box-sizing: border-box;
+}
+.button:hover, .button:active, .button:focus, .button:focus-within,
+button:hover,
+button:active,
+button:focus,
+button:focus-within,
+input[type=submit]:hover,
+input[type=submit]:active,
+input[type=submit]:focus,
+input[type=submit]:focus-within,
+input[type=reset]:hover,
+input[type=reset]:active,
+input[type=reset]:focus,
+input[type=reset]:focus-within,
+input[type=button]:hover,
+input[type=button]:active,
+input[type=button]:focus,
+input[type=button]:focus-within {
+  color: var(--text-color-normal);
+  border-color: var(--text-color-softer);
+  outline: 0;
+}
+
+.button.button-primary,
+button.button-primary,
+input[type=submit].button-primary,
+input[type=reset].button-primary,
+input[type=button].button-primary {
+  color: var(--button-primary-color);
+  background-color: var(--accent-color);
+  border-color: var(--accent-color);
+}
+.button.button-primary:hover, .button.button-primary:active, .button.button-primary:focus, .button.button-primary:focus-within,
+button.button-primary:hover,
+button.button-primary:active,
+button.button-primary:focus,
+button.button-primary:focus-within,
+input[type=submit].button-primary:hover,
+input[type=submit].button-primary:active,
+input[type=submit].button-primary:focus,
+input[type=submit].button-primary:focus-within,
+input[type=reset].button-primary:hover,
+input[type=reset].button-primary:active,
+input[type=reset].button-primary:focus,
+input[type=reset].button-primary:focus-within,
+input[type=button].button-primary:hover,
+input[type=button].button-primary:active,
+input[type=button].button-primary:focus,
+input[type=button].button-primary:focus-within {
+  color: var(--button-primary-color);
+  background-color: var(--accent-color-hover);
+  border-color: var(--accent-color-hover);
+}
+
+.pagination {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+  padding: 0;
+}
+.pagination li {
+  border: 1px solid var(--border-color);
+  border-radius: 0.25em;
+  padding: 0.25em 0.5em;
+}
+/*# sourceMappingURL=style.css.map */
