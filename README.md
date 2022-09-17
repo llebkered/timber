@@ -1,7 +1,7 @@
 
 # A Timber Starter Theme
 
-An opnionated and dirty WordPress Starter theme based on Timber allowing Twig templating for WordPress.
+An opinionated and dirty WordPress Starter theme based on Timber allowing Twig templating for WordPress.
 
 This is a bit rough and needs some clean up. The usual caveats apply. Use at your own risk.
 
